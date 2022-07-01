@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BlogList from "./Bloglist";
 const Home = () => {
     const [blogs, setBlogs] = useState([
@@ -11,6 +11,11 @@ const Home = () => {
         setBlogs(newBlogs);
 
     };
+   
+ useEffect(()=>{
+    console.log('use effect ran');
+    console.log(blogs);
+ }, []);   // The empty array serve as a dependency array for useEffect, or you can add a useState label into the array so immediately the UseState changes, then the useEffect rerenders "try this with blogs UseState"
     return (  
         <div className="home">
             <BlogList blogs = {blogs} title="All Blogs"  handleDelete = {handleDelete}/>
