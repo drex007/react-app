@@ -1,22 +1,29 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import Navbar from './Navbar'
-import Home from './Home'
+import { useState } from 'react';
+// import logo from './logo.svg';
+import Navbar from './Navbar';
+import Home from './Home';
+import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Create from './Create';
 
 function App() {
-  const title = "This is my name";
-  const likes = 50;
-  const person = {myname : "James", age:50, address: "rayfield"}
-
 
   return (
-    <div className="App">
-      <Navbar />
-      <div className="content"> 
-       <Home />
-       
-      </div>
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <div className="content"> 
+          <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>  
+              <Route path="/create">
+                <Create />
+              </Route>  
+          </Switch>
+        
+        </div>
+     </div>
+    </Router>
   )
 }
 
