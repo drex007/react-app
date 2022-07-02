@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
+
 
 const Create = () => {
-    const [title, setTitle] = useState('james');
+    const navigation = useHistory();
+    const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
     const [author, setAuthor] = useState('mario');
     const [isPending, setIsPending] = useState(false);
@@ -19,6 +22,7 @@ const Create = () => {
     }).then(()=>{
         setIsPending(false);
         console.log("added"); 
+        navigation.push('/');
     })
     }
     return ( 
